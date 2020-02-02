@@ -2,20 +2,35 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// A little demo program that creates a PNG image of the VGA 256 color
+// default palette.
+
+// Usage:
+//     vga-palette-image vga256_palette.png
 package main
 
 import (
+	"fmt"
 	"image"
 	"image/png"
-	"log"
 	"os"
 
 	"github.com/fzipp/vga"
 )
 
-const imageFileName = "vga256_palette.png"
+func usage() {
+	fail(`A little demo program that creates a PNG image of the VGA 256 color
+default palette.
+
+Usage: vga-palette-image vga256_palette.png`)
+}
 
 func main() {
+	if len(os.Args) < 2 {
+		usage()
+	}
+	imageFileName := os.Args[1]
+
 	colorCount := 256
 	imageWidth := 256
 	imageHeight := imageWidth
@@ -40,14 +55,10 @@ func main() {
 	}
 
 	outFile, err := os.Create(imageFileName)
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 	defer outFile.Close()
 	err = png.Encode(outFile, img)
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 }
 
 func drawRectangle(img *image.Paletted, colorIndex uint8, x, y, w, h int) {
@@ -56,4 +67,15 @@ func drawRectangle(img *image.Paletted, colorIndex uint8, x, y, w, h int) {
 			img.SetColorIndex(ix, iy, colorIndex)
 		}
 	}
+}
+
+func check(err error) {
+	if err != nil {
+		fail(err)
+	}
+}
+
+func fail(message interface{}) {
+	_, _ = fmt.Fprintln(os.Stderr, message)
+	os.Exit(1)
 }
