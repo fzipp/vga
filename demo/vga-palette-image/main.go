@@ -4,7 +4,7 @@
 
 // A little demo program that creates a PNG image of the VGA 256 color
 // default palette.
-
+//
 // Usage:
 //     vga-palette-image vga256_palette.png
 package main

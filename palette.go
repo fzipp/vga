@@ -2,10 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Package vga provides the VGA 256-color default palette, famously used in
+// video mode 13h.
+// See also https://en.wikipedia.org/wiki/Video_Graphics_Array#Color_palette
 package vga
 
 import "image/color"
 
+// DefaultPalette is the VGA 256-color default palette. It can be used as a
+// color.Palette from the standard library, e.g to create an image.Paletted.
 var DefaultPalette = []color.Color{
 	color.RGBA{R: 0x00, G: 0x00, B: 0x00, A: 0xff},
 	color.RGBA{R: 0x00, G: 0x00, B: 0xaa, A: 0xff},
