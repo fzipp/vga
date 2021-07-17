@@ -8,20 +8,23 @@ from the standard library, e.g. to create an [image.Paletted](https://golang.org
 
 Add it to a module as a dependency via:
 
-    go get github.com/fzipp/vga
+```
+go get github.com/fzipp/vga
+```
 
 ## Example usage
 
-    package main
+```go
+package main
 
-    import (
-    	"image"
+import (
+	"image"
 
-    	"github.com/fzipp/vga"
-    )
+	"github.com/fzipp/vga"
+)
 
-    func main() {
-    	img := image.NewPaletted(image.Rect(0, 0, 320, 200), vga.DefaultPalette)
-    	// ...
-    }
-
+func main() {
+	img := image.NewPaletted(image.Rect(0, 0, 320, 200), vga.DefaultPalette)
+	// ...
+}
+```
