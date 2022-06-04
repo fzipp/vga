@@ -6,7 +6,8 @@
 // default palette.
 //
 // Usage:
-//     vga-palette-image vga256_palette.png
+//
+//	vga-palette-image vga256_palette.png
 package main
 
 import (
