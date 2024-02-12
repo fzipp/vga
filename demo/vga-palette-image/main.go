@@ -44,7 +44,7 @@ func main() {
 	img := image.NewPaletted(image.Rect(0, 0, imageWidth, imageHeight),
 		vga.DefaultPalette)
 
-	for colorIndex := 0; colorIndex < colorCount; colorIndex++ {
+	for colorIndex := range colorCount {
 		row := colorIndex / colorsPerRow
 		column := colorIndex % colorsPerRow
 		x := column*colorBoxWidth + margin

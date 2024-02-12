@@ -1,3 +1,3 @@
 module github.com/fzipp/vga
 
-go 1.18
+go 1.22.0
